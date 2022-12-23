@@ -23,13 +23,17 @@ class CityRepository {
         }
     }
 
-    async updateCity(cityId, {name}) {
+    async updateCity(cityId, data) {
         try {
-            return await City.update({name}, {
-                where : {
-                    id : cityId
-                }
-            } )
+            // return await City.update({name}, {
+            //     where : {
+            //         id : cityId
+            //     }
+            // } )
+            const city = await City.findByPk(cityId);
+            city.name = data.name;
+            await city.save();
+            return city;
 
         }catch(error) {
             console.log('Something went wrong in the database server');
@@ -40,8 +44,19 @@ class CityRepository {
 
     async getCity(cityId) {
         try {
-            return await City.findByPk(cityId);
+            const city =  await City.findByPk(cityId);
+            return city;
+        }catch(error) {
+            console.log('Something went wrong in the database server');
+            throw error;
+        }
+    }
 
+
+    async getAllCities() {
+        try {
+            const cities = await City.findAll();
+            return cities;
         }catch(error) {
             console.log('Something went wrong in the database server');
             throw error;

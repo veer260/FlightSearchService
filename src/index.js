@@ -2,10 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./models/index');
 const CityRepository = require('./Repository/City-repository')
-const CityService = require('./services/city-service')
+const { CityService } = require('./services/index')
 
 const {PORT}  =require('./config/serverConfig');
 const { cityRepository } = require('./Repository');
+const apiRouter = require('./routes/index');
+const cityController = require('./controllers/city-controller')
 
 const setupAndStartServer = async() => {
     const app = express();
@@ -14,17 +16,14 @@ const setupAndStartServer = async() => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
 
-    app.listen(PORT, () => {
-        // console.log(cityRepository);
-        const repo = new CityRepository;
-        // const 
-        // console.log(CityService);
+    app.use('/api', apiRouter);
+
+    app.listen(PORT, async() => {
+        // const repo = new CityRepository;
         // const obj = new CityService();
-        // obj.cityRepository.createCity({name : "vrindavan"})
-        // repo.createCity({name : 'Bangalore'});
-        // repo.updateCity(1, {name : 'Mathura'});
-        console.log(`server started at port ${PORT}`)
-        // console.log(db.City);
+        // const res = await obj.getCity(7);
+        // console.log(res.dataValues);
+        console.log(`server started at port ${PORT}`);
     })
 }
 
