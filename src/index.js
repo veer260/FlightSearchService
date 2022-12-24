@@ -10,6 +10,7 @@ const {PORT}  =require('./config/serverConfig');
 const { cityRepository } = require('./Repository');
 const apiRouter = require('./routes/index');
 const cityController = require('./controllers/city-controller')
+const { AirplaneRepository } = require('./Repository/index')
 
 const setupAndStartServer = async() => {
     const app = express();
@@ -28,6 +29,10 @@ const setupAndStartServer = async() => {
         // })
         // const airports = await city.getAirports();
         // console.log(airports);
+        // const airplaneRepository = new AirplaneRepository();
+        // console.log(airplaneRepository);
+        // const airplane = await airplaneRepository.getAirplane(1);
+        //     console.log(airplane);
         console.log(`server started at port ${PORT}`);
     })
 }
