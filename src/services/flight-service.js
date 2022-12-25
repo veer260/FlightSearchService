@@ -18,8 +18,16 @@ class FlightService {
             const flight = await this.flightRepository.createFlight({...data, totalSeats : airplane.capacity});
             return flight;
         } catch (error) {
-            // const airplane = await this.airplaneRepository.getAirplane(data.airplaneId);
-            // console.log(airplane);
+            console.log('Something went wrong in the Service layer!');
+            throw { error};
+        }
+    }
+
+    async getAllFlightData(data) {
+        try {
+            const flights = this.flightRepository.getAllFlights(data);
+            return flights;
+        } catch (error) {
             console.log('Something went wrong in the Service layer!');
             throw { error};
         }
