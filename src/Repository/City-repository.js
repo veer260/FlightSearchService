@@ -35,7 +35,6 @@ class CityRepository {
             city.name = data.name;
             await city.save();
             return city;
-
         }catch(error) {
             console.log('Something went wrong in the database server');
             throw error;
