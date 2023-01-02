@@ -1,4 +1,4 @@
-const {City} = require('../models/index');
+const { City }  = require('../models/index');
 const { Op } = require('sequelize');
 
 class CityRepository {
@@ -38,7 +38,6 @@ class CityRepository {
         }catch(error) {
             console.log('Something went wrong in the database server');
             throw error;
-
         }
     }
 
