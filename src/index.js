@@ -22,17 +22,7 @@ const setupAndStartServer = async() => {
     app.use('/api', apiRouter);
 
     app.listen(PORT, async() => { 
-        // const city = await db.City.findOne({
-        //     where : {
-        //         id : 11
-        //     }
-        // })
-        // const airports = await city.getAirports();
-        // console.log(airports);
-        // const airplaneRepository = new AirplaneRepository();
-        // console.log(airplaneRepository);
-        // const airplane = await airplaneRepository.getAirplane(1);
-        //     console.log(airplane);
+       
         console.log(`server started at port ${PORT}`);
     })
 }
